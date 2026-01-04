@@ -1,33 +1,32 @@
-import { Box, Heading, Text, VStack, Spinner } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
+import UnderConstruction from "./components/UnderConstruction";
 
 const App = () => {
-  useEffect(() => {
-    document.title = "Gamera - Find Your Desired Games";
-  }, []);
   return (
-    <Box
-      minH="100vh"
-      bg="gray.50"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-    >
-      <VStack spacing={6} textAlign="center">
-        <Heading
-          size="2xl"
-          bgGradient="linear(to-r, blue.400, purple.500)"
-          bgClip="text"
-          fontWeight="bold"
-        >
-          Welcome to Gamera
-        </Heading>
-        <Text fontSize="lg" color="gray.600">
-          Website on progress
-        </Text>
-        <Spinner size="xl" color="blue.500" />
-      </VStack>
-    </Box>
+    <>
+      {/* Defining Template <Grid templateAreas={`"nav nav" "aside main"`}> */}
+      <Grid
+        templateAreas={{
+          base: `"nav" "main"`,
+          md: `"nav nav" "aside main"`,
+        }}
+      >
+        <GridItem area={"nav"} bg={"black"}>
+          <NavBar></NavBar>
+        </GridItem>
+        <Show above="lg">
+          <GridItem area={"aside"} bg={"gold"}>
+            Aside
+          </GridItem>
+        </Show>
+        <GridItem area={"main"} bg={"dodgerblue"}>
+          Main
+        </GridItem>
+      </Grid>
+
+      <UnderConstruction></UnderConstruction>
+    </>
   );
 };
 
