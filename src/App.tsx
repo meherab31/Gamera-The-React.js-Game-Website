@@ -3,8 +3,6 @@ import NavBar from "./components/NavBar";
 import UnderConstruction from "./components/UnderConstruction";
 
 const App = () => {
-  localStorage.clear();
-
   return (
     <>
       {/* Defining Template <Grid templateAreas={`"nav nav" "aside main"`}> */}
@@ -14,17 +12,13 @@ const App = () => {
           md: `"nav nav" "aside main"`,
         }}
       >
-        <GridItem area={"nav"} bg={"black"}>
+        <GridItem area={"nav"}>
           <NavBar></NavBar>
         </GridItem>
         <Show above="lg">
-          <GridItem area={"aside"} bg={"gold"}>
-            Aside
-          </GridItem>
+          <GridItem area={"aside"}>Aside</GridItem>
         </Show>
-        <GridItem area={"main"} bg={"dodgerblue"}>
-          Main
-        </GridItem>
+        <GridItem area={"main"}>Main</GridItem>
       </Grid>
 
       {/* <UnderConstruction></UnderConstruction> */}
