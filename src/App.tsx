@@ -3,6 +3,8 @@ import NavBar from "./components/NavBar";
 import UnderConstruction from "./components/UnderConstruction";
 
 const App = () => {
+  localStorage.clear();
+
   return (
     <>
       {/* Defining Template <Grid templateAreas={`"nav nav" "aside main"`}> */}
@@ -25,7 +27,7 @@ const App = () => {
         </GridItem>
       </Grid>
 
-      <UnderConstruction></UnderConstruction>
+      {/* <UnderConstruction></UnderConstruction> */}
     </>
   );
 };
