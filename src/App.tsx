@@ -2,8 +2,12 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import UnderConstruction from "./components/UnderConstruction";
 import { GameGrid } from "./components/GameGrid";
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    document.title = "Gamera";
+  }, []);
   return (
     <>
       {/* Defining Template <Grid templateAreas={`"nav nav" "aside main"`}> */}
