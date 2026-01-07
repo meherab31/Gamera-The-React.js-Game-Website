@@ -8,6 +8,7 @@ const App = () => {
   useEffect(() => {
     document.title = "Gamera";
   }, []);
+
   return (
     <>
       {/* Defining Template <Grid templateAreas={`"nav nav" "aside main"`}> */}
