@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import UnderConstruction from "./components/UnderConstruction";
 import { GameGrid } from "./components/GameGrid";
 import { useEffect } from "react";
+import GenreList from "./components/GenreList";
 
 const App = () => {
   useEffect(() => {
@@ -22,7 +23,9 @@ const App = () => {
           <NavBar></NavBar>
         </GridItem>
         <Show above="lg">
-          <GridItem area={"aside"}>Aside</GridItem>
+          <GridItem paddingLeft={"8"} area={"aside"}>
+            <GenreList />
+          </GridItem>
         </Show>
         <GridItem area={"main"}>
           {/* Importing Game List Component */}
