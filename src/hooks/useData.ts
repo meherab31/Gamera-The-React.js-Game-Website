@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 
 interface FetchResponse<T> {
   count: number;
   results: T[];
 }
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  deps?: any[]
+) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -17,7 +21,10 @@ const useData = <T>(endpoint: string) => {
     //fetch data from api
     setLoading(true); //set loading to true when starting fetch
     apiClient
-      .get<FetchResponse<T>>(endpoint, { signal: controller.signal }) //abort fetch if component unmounts
+      .get<FetchResponse<T>>(endpoint, {
+        signal: controller.signal,
+        ...requestConfig,
+      }) //abort fetch if component unmounts
       .then((res) => {
         setData(res.data.results);
         setLoading(false); //set loading to false when fetch is complete
@@ -29,7 +36,7 @@ const useData = <T>(endpoint: string) => {
         setLoading(false); //set loading to false if there was an error
       });
     return () => controller.abort();
-  }, []); //[] means this effect runs once on mount
+  }, [...(deps || [])]); //[] means this useEffect runs only once when component mounts
 
   return { data, error, isLoading };
 };
