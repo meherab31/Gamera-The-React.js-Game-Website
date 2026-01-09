@@ -8,10 +8,6 @@ import { Genre } from "./hooks/useGenres";
 const App = () => {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
-  useEffect(() => {
-    document.title = "Gamera";
-  }, []);
-
   return (
     <>
       {/* Defining Template <Grid templateAreas={`"nav nav" "aside main"`}> */}
