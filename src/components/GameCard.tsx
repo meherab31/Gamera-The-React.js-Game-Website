@@ -1,4 +1,12 @@
-import { Card, Image, CardBody, Heading, Text, HStack } from "@chakra-ui/react";
+import {
+  Card,
+  Image,
+  CardBody,
+  Heading,
+  Text,
+  HStack,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Game } from "../hooks/useGames";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
@@ -9,8 +17,15 @@ export interface GameCardProps {
 }
 
 const GameCard = ({ game }: GameCardProps) => {
+  const bgColor = useColorModeValue("gray.900", "gray.700");
+
   return (
-    <Card>
+    <Card
+      bg={bgColor}
+      textColor={bgColor === "gray.900" ? "white" : "whiteAlpha.900"}
+      borderRadius={10}
+      overflow="hidden"
+    >
       <Image src={getCroppedImageUrl(game.background_image)} alt={game.name} />
       <CardBody>
         <Heading fontSize={"2xl"}>{game.name}</Heading>
