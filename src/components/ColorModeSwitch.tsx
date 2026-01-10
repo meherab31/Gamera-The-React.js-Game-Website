@@ -1,8 +1,14 @@
-import { HStack, Switch, useColorMode } from "@chakra-ui/react";
+import {
+  HStack,
+  Switch,
+  useColorMode,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 const ColorModeSwitch = () => {
   //custom hook for color mode
   const { colorMode, toggleColorMode } = useColorMode();
+  const showText = useBreakpointValue({ base: false, md: true });
   return (
     <HStack>
       <Switch
@@ -10,7 +16,7 @@ const ColorModeSwitch = () => {
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       >
-        Mode
+        {showText && "Mode"}
       </Switch>
     </HStack>
   );
