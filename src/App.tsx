@@ -6,6 +6,7 @@ import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
+import SortSelector from "./components/sortSelector";
 
 // Defining GameQuery Interface for selected genre and platform
 export interface GameQuery {
@@ -49,6 +50,7 @@ const App = () => {
             }
             selectedPlatform={gameQuery.platform}
           />
+          <SortSelector></SortSelector>
           {/* Importing Game List Component */}
           <GameGrid
             gameQuery={gameQuery}
