@@ -3,6 +3,7 @@ import {
   Switch,
   useColorMode,
   useBreakpointValue,
+  Text,
 } from "@chakra-ui/react";
 
 const ColorModeSwitch = () => {
@@ -10,14 +11,14 @@ const ColorModeSwitch = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const showText = useBreakpointValue({ base: false, md: true });
   return (
-    <HStack>
+    <HStack spacing={2}>
       <Switch
         colorScheme="green"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
-      >
-        {showText && "Mode"}
-      </Switch>
+        aria-label="Toggle color mode"
+      />
+      {showText && <Text whiteSpace="nowrap">Mode</Text>}
     </HStack>
   );
 };
