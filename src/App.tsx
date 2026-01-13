@@ -6,12 +6,13 @@ import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./hooks/useGames";
-import SortSelector from "./components/sortSelector";
+import SortSelector from "./components/SortSelector";
 
 // Defining GameQuery Interface for selected genre and platform
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 const App = () => {
@@ -50,11 +51,14 @@ const App = () => {
             }
             selectedPlatform={gameQuery.platform}
           />
-          <SortSelector></SortSelector>
+          <SortSelector
+            selectedSortOrder={gameQuery.sortOrder}
+            onSelectSortOrder={(sortOrder) =>
+              setGameQuery({ ...gameQuery, sortOrder })
+            }
+          ></SortSelector>
           {/* Importing Game List Component */}
-          <GameGrid
-            gameQuery={gameQuery}
-          ></GameGrid>
+          <GameGrid gameQuery={gameQuery}></GameGrid>
         </GridItem>
       </Grid>
 
