@@ -3,7 +3,7 @@ import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchGames from "./SearchGames";
 
-const NavBar = () => {
+const NavBar = ({ onSearch }: { onSearch: (searchText: string) => void }) => {
   const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("black", "white");
 
@@ -16,7 +16,7 @@ const NavBar = () => {
             Gamera
           </Text>
         </HStack>
-        <SearchGames />
+        <SearchGames onSearch={onSearch} />
         <ColorModeSwitch />
       </HStack>
     </Box>
