@@ -14,7 +14,7 @@ const GameHeading = ({ gameQuery }: GameHeadingProps) => {
   }`.trim();
 
   return (
-    <Heading paddingX={5} as={"h2"}>
+    <Heading paddingBottom={2} paddingX={5} as={"h2"}>
       {heading}
     </Heading>
   );
